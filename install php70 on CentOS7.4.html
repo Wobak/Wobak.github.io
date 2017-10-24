@@ -83,7 +83,87 @@
 
 
   <div>
-    <p>This is the article about the installation of PHP 7.0 on a CentOS 7.4 machine using the native httpd service and firewalld + SELinux</p>
+    <h1>Using PHP 7.0 on CentOS 7.4</h1>
+<p>This article is about I concern I had recently : </p>
+<blockquote>
+<p>How to use PHP 7.0 or 7.1 on CentOS 7 on the default httpd server without having to use external repositories or recompile PHP from source?</p>
+</blockquote>
+<p>The answer lies in the <strong>Software Collections</strong>. Here we will start from a fresh CentOS installation, and move forward into having a website running PHP 7.0.</p>
+<p>First of all, we will install the Software Collection's repository (it's an official repo that needs to be enabled).</p>
+<div class="highlight"><pre><span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="c1"># yum -y install centos-release-scl.noarch</span>
+</pre></div>
+
+
+<p>This command will deploy a new repository on your system, which is part of the official repositories of CentOS.</p>
+<p>Once this is installed, let's install the PHP 7 package as well as the httpd packages, along with the addons.</p>
+<div class="highlight"><pre><span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">24</span> <span class="c1"># yum -y install rh-php70 rh-php70-php rh-php70-php-fpm httpd</span>
+</pre></div>
+
+
+<p>In order to use php 7.0, we will be using php-fpm, which is the <a href="https://wiki.apache.org/httpd/php">recommended way</a>, in place of mod_php. To do this, we will use the fpm service.<br>
+This service will run by default on port 9000. If you need to change that port, head to the file :  </p>
+<div class="highlight"><pre><span class="sr">/etc/o</span><span class="n">pt</span><span class="sr">/rh/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="sr">/php-fpm.d/</span><span class="n">www</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+
+
+<p>And change the line :  </p>
+<div class="highlight"><pre><span class="nb">listen</span> <span class="o">=</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span>
+</pre></div>
+
+
+<p>to the one you want to setup (e.g 9002). Once this is done, we need to change the selinux database to add 9002 to a valid port to run for httpd services :</p>
+<div class="highlight"><pre><span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">http_port_t</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="mi">9002</span>
+</pre></div>
+
+
+<p>Once this is done, start the php-fpm service and enable it at boot : </p>
+<div class="highlight"><pre><span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">29</span> <span class="c1"># systemctl enable rh-php70-php-fpm.service</span>
+<span class="n">Created</span> <span class="nb">symlink</span> <span class="n">from</span> <span class="sr">/etc/s</span><span class="n">ystemd</span><span class="sr">/system/m</span><span class="n">ulti</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span><span class="sr">/rh-php70-php-fpm.service to /</span><span class="n">usr</span><span class="sr">/lib/s</span><span class="n">ystemd</span><span class="sr">/system/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="o">.</span>
+<span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">30</span> <span class="c1"># systemctl start rh-php70-php-fpm.service</span>
+<span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">31</span> <span class="c1"># systemctl status rh-php70-php-fpm.service</span>
+<span class="err">●</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span> <span class="o">-</span> <span class="n">The</span> <span class="n">PHP</span> <span class="n">FastCGI</span> <span class="n">Process</span> <span class="n">Manager</span>
+   <span class="n">Loaded:</span> <span class="n">loaded</span> <span class="p">(</span><span class="sr">/usr/</span><span class="n">lib</span><span class="sr">/systemd/s</span><span class="n">ystem</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="p">;</span> <span class="n">enabled</span><span class="p">;</span> <span class="n">vendor</span> <span class="n">preset:</span> <span class="n">disabled</span><span class="p">)</span>
+   <span class="n">Active:</span> <span class="n">active</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="n">since</span> <span class="n">Tue</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">11</span> <span class="n">CEST</span><span class="p">;</span> <span class="mi">2</span><span class="n">s</span> <span class="n">ago</span>
+ <span class="n">Main</span> <span class="n">PID:</span> <span class="mi">30045</span> <span class="p">(</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="p">)</span>
+   <span class="n">Status:</span> <span class="s">&quot;Ready to handle connections&quot;</span>
+   <span class="n">CGroup:</span> <span class="sr">/system.slice/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span>
+           <span class="err">├─</span><span class="mi">30045</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">master</span> <span class="n">process</span> <span class="p">(</span><span class="sr">/etc/o</span><span class="n">pt</span><span class="sr">/rh/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">/</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
+           <span class="err">├─</span><span class="mi">30046</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+           <span class="err">├─</span><span class="mi">30047</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+           <span class="err">├─</span><span class="mi">30048</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+           <span class="err">├─</span><span class="mi">30049</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+           <span class="err">└─</span><span class="mi">30050</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+</pre></div>
+
+
+<p>Now, we need to configure our httpd daemon to tell it to use this service to process php pages.</p>
+<p>Let's create a file named <code>fpm.conf</code> in our <code>/etc/httpd/conf.d/</code> folder and give it the following content : </p>
+<div class="highlight"><pre><span class="c1"># PHP scripts setup</span>
+<span class="n">ProxyPassMatch</span> <span class="o">^</span><span class="sr">/(.*.php)$ fcgi://127.0.0.1:9000/</span><span class="n">var</span><span class="sr">/www/</span><span class="n">html</span>
+
+<span class="n">Alias</span> <span class="sr">/ /</span><span class="n">var</span><span class="sr">/www/</span><span class="n">html</span><span class="o">/</span>
+</pre></div>
+
+
+<p>When doing this, apache will send all files that end with .php to our php-fpm service and display the result.</p>
+<p>To confirm it's working, we can create a small page with a phpinfo request in /var/www/html</p>
+<div class="highlight"><pre><span class="x">root @ centos7-vm: ~ 1 # cat /var/www/html/index.php</span>
+<span class="cp">&lt;?php</span> <span class="nb">phpinfo</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">root @ centos7-vm: ~ 1 #</span>
+</pre></div>
+
+
+<p>Don't forget to also start, enable and add your httpd service to your firewall : </p>
+<div class="highlight"><pre><span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">43</span> <span class="c1"># systemctl enable httpd ; systemctl start httpd</span>
+<span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">46</span> <span class="c1"># firewall-cmd --add-service=http --permanent</span>
+<span class="n">success</span>
+<span class="n">root</span> <span class="nv">@</span> <span class="nv">centos7</span><span class="o">-</span><span class="n">vm:</span> <span class="o">~</span> <span class="mi">47</span> <span class="c1"># firewall-cmd --reload</span>
+<span class="n">success</span>
+</pre></div>
+
+
+<p>Now if we connect to the website, it will display the php correctly handled : 
+<img alt="phpinfo7.0" src="phpinfo7.0.png"></p>
   </div>
   <div class="tag-cloud">
     <p>
