@@ -97,31 +97,31 @@
 
 
 <p>To confirm the new repo are installed, type </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># yum repolist</span>
-<span class="n">Loaded</span> <span class="n">plugins:</span> <span class="n">fastestmirror</span>
-<span class="n">centos</span><span class="o">-</span><span class="n">sclo</span><span class="o">-</span><span class="n">rh</span>                          <span class="o">|</span> <span class="mf">2.9</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="n">centos</span><span class="o">-</span><span class="n">sclo</span><span class="o">-</span><span class="n">sclo</span>                        <span class="o">|</span> <span class="mf">2.9</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="n">epel</span><span class="sr">/x86_64/m</span><span class="n">etalink</span>                    <span class="o">|</span>  <span class="mi">25</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="n">epel</span>                                    <span class="o">|</span> <span class="mf">4.7</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="p">(</span><span class="mi">1</span><span class="sr">/5): centos-sclo-sclo/x</span><span class="mi">86_64</span><span class="o">/</span><span class="n">primary_db</span>               <span class="o">|</span> <span class="mi">196</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="p">(</span><span class="mi">2</span><span class="sr">/5): epel/x</span><span class="mi">86_64</span><span class="o">/</span><span class="n">group_gz</span>                             <span class="o">|</span> <span class="mi">266</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="p">(</span><span class="mi">3</span><span class="sr">/5): epel/x</span><span class="mi">86_64</span><span class="o">/</span><span class="n">updateinfo</span>                           <span class="o">|</span> <span class="mi">882</span> <span class="n">kB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span>
-<span class="p">(</span><span class="mi">4</span><span class="sr">/5): epel/x</span><span class="mi">86_64</span><span class="o">/</span><span class="n">primary_db</span>                           <span class="o">|</span> <span class="mf">6.2</span> <span class="n">MB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">01</span>
-<span class="p">(</span><span class="mi">5</span><span class="sr">/5): centos-sclo-rh/x</span><span class="mi">86_64</span><span class="o">/</span><span class="n">primary_db</span>                 <span class="o">|</span> <span class="mf">3.0</span> <span class="n">MB</span>  <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">01</span>
+<div class="highlight"><pre>root@centos <span class="c"># yum repolist</span>
+Loaded plugins: fastestmirror
+centos-sclo-rh                          | 2.9 kB  00:00:00
+centos-sclo-sclo                        | 2.9 kB  00:00:00
+epel/x86_64/metalink                    |  25 kB  00:00:00
+epel                                    | 4.7 kB  00:00:00
+<span class="o">(</span>1/5<span class="o">)</span>: centos-sclo-sclo/x86_64/primary_db               | 196 kB  00:00:00
+<span class="o">(</span>2/5<span class="o">)</span>: epel/x86_64/group_gz                             | 266 kB  00:00:00
+<span class="o">(</span>3/5<span class="o">)</span>: epel/x86_64/updateinfo                           | 882 kB  00:00:00
+<span class="o">(</span>4/5<span class="o">)</span>: epel/x86_64/primary_db                           | 6.2 MB  00:00:01
+<span class="o">(</span>5/5<span class="o">)</span>: centos-sclo-rh/x86_64/primary_db                 | 3.0 MB  00:00:01
 
-<span class="n">Loading</span> <span class="n">mirror</span> <span class="n">speeds</span> <span class="n">from</span> <span class="n">cached</span> <span class="n">hostfile</span>
- <span class="o">*</span> <span class="n">base:</span> <span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span>
- <span class="o">*</span> <span class="n">epel:</span> <span class="n">fr</span><span class="o">.</span><span class="n">mirror</span><span class="o">.</span><span class="n">babylon</span><span class="o">.</span><span class="n">network</span>
- <span class="o">*</span> <span class="n">extras:</span> <span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span>
- <span class="o">*</span> <span class="n">updates:</span> <span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span>
-<span class="n">repo</span> <span class="n">id</span>                     <span class="n">repo</span> <span class="n">name</span>                                               <span class="n">status</span>
-<span class="n">base</span><span class="sr">/7/x</span><span class="mi">86_64</span>               <span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span> <span class="o">-</span> <span class="n">Base</span>                                         <span class="mi">9</span><span class="p">,</span><span class="mi">591</span>
-<span class="n">centos</span><span class="o">-</span><span class="n">sclo</span><span class="o">-</span><span class="n">rh</span><span class="o">/</span><span class="n">x86_64</span>       <span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span> <span class="o">-</span> <span class="n">SCLo</span> <span class="n">rh</span>                                      <span class="mi">6</span><span class="p">,</span><span class="mi">640</span>
-<span class="n">centos</span><span class="o">-</span><span class="n">sclo</span><span class="o">-</span><span class="n">sclo</span><span class="o">/</span><span class="n">x86_64</span>     <span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span> <span class="o">-</span> <span class="n">SCLo</span> <span class="n">sclo</span>                                    <span class="mi">500</span>
-<span class="n">epel</span><span class="o">/</span><span class="n">x86_64</span>                 <span class="n">Extra</span> <span class="n">Packages</span> <span class="k">for</span> <span class="n">Enterprise</span> <span class="n">Linux</span> <span class="mi">7</span> <span class="o">-</span> <span class="n">x86_64</span>          <span class="mi">12</span><span class="p">,</span><span class="mi">289</span>
-<span class="n">extras</span><span class="sr">/7/x</span><span class="mi">86_64</span>             <span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span> <span class="o">-</span> <span class="n">Extras</span>                                       <span class="mi">388</span>
-<span class="n">updates</span><span class="sr">/7/x</span><span class="mi">86_64</span>            <span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span> <span class="o">-</span> <span class="n">Updates</span>                                      <span class="mi">1</span><span class="p">,</span><span class="mi">929</span>
-<span class="n">repolist:</span> <span class="mi">31</span><span class="p">,</span><span class="mi">337</span>
+Loading mirror speeds from cached hostfile
+ * base: distrib-coffee.ipsl.jussieu.fr
+ * epel: fr.mirror.babylon.network
+ * extras: distrib-coffee.ipsl.jussieu.fr
+ * updates: distrib-coffee.ipsl.jussieu.fr
+repo id                     repo name                                               status
+base/7/x86_64               CentOS-7 - Base                                         9,591
+centos-sclo-rh/x86_64       CentOS-7 - SCLo rh                                      6,640
+centos-sclo-sclo/x86_64     CentOS-7 - SCLo sclo                                    500
+epel/x86_64                 Extra Packages <span class="k">for </span>Enterprise Linux 7 - x86_64          12,289
+extras/7/x86_64             CentOS-7 - Extras                                       388
+updates/7/x86_64            CentOS-7 - Updates                                      1,929
+repolist: 31,337
 </pre></div>
 
 
@@ -151,57 +151,57 @@
 
 
 <p>Once you've done it, we can enable &amp; start our php-fpm service</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># systemctl enable rh-php71-php-fpm.service</span>
-<span class="n">Created</span> <span class="nb">symlink</span> <span class="n">from</span> <span class="sr">/etc/s</span><span class="n">ystemd</span><span class="sr">/system/m</span><span class="n">ulti</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span><span class="sr">/rh-php71-php-fpm.service to /</span><span class="n">usr</span><span class="sr">/lib/s</span><span class="n">ystemd</span><span class="sr">/system/</span><span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="o">.</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># systemctl start rh-php71-php-fpm.service</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># systemctl status rh-php71-php-fpm.service</span>
-<span class="err">●</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span> <span class="o">-</span> <span class="n">The</span> <span class="n">PHP</span> <span class="n">FastCGI</span> <span class="n">Process</span> <span class="n">Manager</span>
-   <span class="n">Loaded:</span> <span class="n">loaded</span> <span class="p">(</span><span class="sr">/usr/</span><span class="n">lib</span><span class="sr">/systemd/s</span><span class="n">ystem</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="p">;</span> <span class="n">enabled</span><span class="p">;</span> <span class="n">vendor</span> <span class="n">preset:</span> <span class="n">disabled</span><span class="p">)</span>
-   <span class="n">Active:</span> <span class="n">active</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="n">since</span> <span class="n">Wed</span> <span class="mi">2018</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">10</span> <span class="mi">20</span><span class="p">:</span><span class="mo">01</span><span class="p">:</span><span class="mo">02</span> <span class="n">CET</span><span class="p">;</span> <span class="mi">3</span><span class="n">s</span> <span class="n">ago</span>
- <span class="n">Main</span> <span class="n">PID:</span> <span class="mi">4343</span> <span class="p">(</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="p">)</span>
-   <span class="n">Status:</span> <span class="s">&quot;Ready to handle connections&quot;</span>
-   <span class="n">CGroup:</span> <span class="sr">/system.slice/</span><span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span>
-           <span class="err">├─</span><span class="mi">4343</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">master</span> <span class="n">process</span> <span class="p">(</span><span class="sr">/etc/o</span><span class="n">pt</span><span class="sr">/rh/</span><span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">/</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
-           <span class="err">├─</span><span class="mi">4344</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
-           <span class="err">├─</span><span class="mi">4345</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
-           <span class="err">├─</span><span class="mi">4346</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
-           <span class="err">├─</span><span class="mi">4347</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
-           <span class="err">└─</span><span class="mi">4348</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm:</span> <span class="n">pool</span> <span class="n">www</span>
+<div class="highlight"><pre>root@centos <span class="c"># systemctl enable rh-php71-php-fpm.service</span>
+Created symlink from /etc/systemd/system/multi-user.target.wants/rh-php71-php-fpm.service to /usr/lib/systemd/system/rh-php71-php-fpm.service.
+root@centos <span class="c"># systemctl start rh-php71-php-fpm.service</span>
+root@centos <span class="c"># systemctl status rh-php71-php-fpm.service</span>
+● rh-php71-php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/rh-php71-php-fpm.service; enabled; vendor preset: disabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Wed 2018-01-10 20:01:02 CET; 3s ago
+ Main PID: 4343 <span class="o">(</span>php-fpm<span class="o">)</span>
+   Status: <span class="s2">&quot;Ready to handle connections&quot;</span>
+   CGroup: /system.slice/rh-php71-php-fpm.service
+           ├─4343 php-fpm: master process <span class="o">(</span>/etc/opt/rh/rh-php71/php-fpm.conf<span class="o">)</span>
+           ├─4344 php-fpm: pool www
+           ├─4345 php-fpm: pool www
+           ├─4346 php-fpm: pool www
+           ├─4347 php-fpm: pool www
+           └─4348 php-fpm: pool www
 
-<span class="n">Jan</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">:</span><span class="mo">01</span><span class="p">:</span><span class="mo">02</span> <span class="n">centos</span><span class="o">-</span><span class="n">kvm</span> <span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Starting</span> <span class="n">The</span> <span class="n">PHP</span> <span class="n">FastCGI</span> <span class="n">Process</span> <span class="n">Manager</span><span class="o">...</span>
-<span class="n">Jan</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">:</span><span class="mo">01</span><span class="p">:</span><span class="mo">02</span> <span class="n">centos</span><span class="o">-</span><span class="n">kvm</span> <span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Started</span> <span class="n">The</span> <span class="n">PHP</span> <span class="n">FastCGI</span> <span class="n">Process</span> <span class="n">Manager</span><span class="o">.</span>
+Jan 10 20:01:02 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Starting The PHP FastCGI Process Manager...
+Jan 10 20:01:02 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Started The PHP FastCGI Process Manager.
 </pre></div>
 
 
 <p>Now that our php is ready to run, we'll go along with the rest of the steps.</p>
 <h2>2. MariaDB</h2>
 <p>Now we need the database to be ready to run. Let's enable and start mariadb. If you don't have already a mariadb installed and secured, I strongly suggest you to run the <a href="https://mariadb.com/kb/en/library/mysql_secure_installation">mysql_secure_installation</a> command after starting the mariadb service for the first time, as described here : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># systemctl enable mariadb.service</span>
-<span class="n">Created</span> <span class="nb">symlink</span> <span class="n">from</span> <span class="sr">/etc/s</span><span class="n">ystemd</span><span class="sr">/system/m</span><span class="n">ulti</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span><span class="sr">/mariadb.service to /</span><span class="n">usr</span><span class="sr">/lib/s</span><span class="n">ystemd</span><span class="sr">/system/m</span><span class="n">ariadb</span><span class="o">.</span><span class="n">service</span><span class="o">.</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># systemctl start mariadb.service</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># mysql_secure_installation</span>
-<span class="o">...</span>
+<div class="highlight"><pre>root@centos <span class="c"># systemctl enable mariadb.service</span>
+Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service to /usr/lib/systemd/system/mariadb.service.
+root@centos <span class="c"># systemctl start mariadb.service</span>
+root@centos <span class="c"># mysql_secure_installation</span>
+...
 </pre></div>
 
 
 <p>Now that our service is running properly, let's create the database and dedicated user. Even if the passbolt installer offers to do this, I think it's better to be using one you can setup yourself : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># mysql -p</span>
-<span class="n">Enter</span> <span class="n">password:</span>
-<span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">MariaDB</span> <span class="n">monitor</span><span class="o">.</span>  <span class="n">Commands</span> <span class="n">end</span> <span class="n">with</span> <span class="p">;</span> <span class="ow">or</span> <span class="o">\</span><span class="n">g</span><span class="o">.</span>
-<span class="n">Your</span> <span class="n">MariaDB</span> <span class="n">connection</span> <span class="n">id</span> <span class="n">is</span> <span class="mi">10</span>
-<span class="n">Server</span> <span class="n">version:</span> <span class="mf">5.5.56</span><span class="o">-</span><span class="n">MariaDB</span> <span class="n">MariaDB</span> <span class="n">Server</span>
+<div class="highlight"><pre>root@centos <span class="c"># mysql -p</span>
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or <span class="se">\g</span>.
+Your MariaDB connection id is 10
+Server version: 5.5.56-MariaDB MariaDB Server
 
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="n">Oracle</span><span class="p">,</span> <span class="n">MariaDB</span> <span class="n">Corporation</span> <span class="n">Ab</span> <span class="ow">and</span> <span class="n">others</span><span class="o">.</span>
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2017, Oracle, MariaDB Corporation Ab and others.
 
-<span class="n">Type</span> <span class="s">&#39;help;&#39;</span> <span class="ow">or</span> <span class="s">&#39;\h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span> <span class="n">Type</span> <span class="s">&#39;\c&#39;</span> <span class="n">to</span> <span class="n">clear</span> <span class="n">the</span> <span class="n">current</span> <span class="n">input</span> <span class="n">statement</span><span class="o">.</span>
+Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for </span>help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
 
-<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">create</span> <span class="n">database</span> <span class="n">passbolt_db</span><span class="p">;</span>
-<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="n">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; create database passbolt_db;
+Query OK, 1 row affected <span class="o">(</span>0.00 sec<span class="o">)</span>
 
-<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">grant</span> <span class="n">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">passbolt_db</span><span class="o">.*</span> <span class="n">to</span> <span class="s">&#39;mypassboltdbuser&#39;</span><span class="nv">@</span><span class="err">&#39;</span><span class="nv">localhost</span><span class="s">&#39; identified by &#39;</span><span class="n">mysupercomplicatedpassword</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; grant all privileges on passbolt_db.* to <span class="s1">&#39;mypassboltdbuser&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;mysupercomplicatedpassword&#39;</span>;
+Query OK, 0 rows affected <span class="o">(</span>0.00 sec<span class="o">)</span>
 
-<span class="n">MariaDB</span> <span class="p">[(</span><span class="n">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="n">quit</span>
+MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
 </pre></div>
 
 
@@ -212,8 +212,8 @@
 <p>If your machine is a VM, you might not have enough entropy to run gpg commands and generate a key.</p>
 <p>To do that, you need to first <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_device_configuration-random_number_generator_device">add a rng device</a> to your VM (requires a shutdown / restart).</p>
 <p>Once this is done, you should have enough entropy to generate keys. To confirm, type the following command : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># cat /proc/sys/kernel/random/entropy_avail</span>
-<span class="mi">1125</span>
+<div class="highlight"><pre>root@centos <span class="c"># cat /proc/sys/kernel/random/entropy_avail</span>
+1125
 </pre></div>
 
 
@@ -224,58 +224,58 @@ Now let's generate a gpg key using the following command : </p>
 
 
 <p>You should fill in all the info in there, but DO NOT ENTER A PASSPHRASE (passbolt can't handle it yet).</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># gpg --gen-key</span>
-<span class="n">gpg</span> <span class="p">(</span><span class="n">GnuPG</span><span class="p">)</span> <span class="mf">2.0.22</span><span class="p">;</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2013</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
-<span class="n">This</span> <span class="n">is</span> <span class="n">free</span> <span class="n">software:</span> <span class="n">you</span> <span class="n">are</span> <span class="n">free</span> <span class="n">to</span> <span class="n">change</span> <span class="ow">and</span> <span class="n">redistribute</span> <span class="n">it</span><span class="o">.</span>
-<span class="n">There</span> <span class="n">is</span> <span class="n">NO</span> <span class="n">WARRANTY</span><span class="p">,</span> <span class="n">to</span> <span class="n">the</span> <span class="n">extent</span> <span class="n">permitted</span> <span class="n">by</span> <span class="n">law</span><span class="o">.</span>
+<div class="highlight"><pre>root@centos <span class="c"># gpg --gen-key</span>
+gpg <span class="o">(</span>GnuPG<span class="o">)</span> 2.0.22; Copyright <span class="o">(</span>C<span class="o">)</span> 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
-<span class="n">gpg:</span> <span class="n">directory</span> <span class="sb">`/root/.gnupg&#39; created</span>
-<span class="sb">gpg: new configuration file `</span><span class="sr">/root/</span><span class="o">.</span><span class="n">gnupg</span><span class="o">/</span><span class="n">gpg</span><span class="o">.</span><span class="n">conf</span><span class="s">&#39; created</span>
-<span class="s">gpg: WARNING: options in `/root/.gnupg/gpg.conf&#39;</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">yet</span> <span class="n">active</span> <span class="n">during</span> <span class="n">this</span> <span class="n">run</span>
-<span class="n">gpg:</span> <span class="n">keyring</span> <span class="sb">`/root/.gnupg/secring.gpg&#39; created</span>
-<span class="sb">gpg: keyring `</span><span class="sr">/root/</span><span class="o">.</span><span class="n">gnupg</span><span class="o">/</span><span class="n">pubring</span><span class="o">.</span><span class="n">gpg</span><span class="s">&#39; created</span>
-<span class="s">Please select what kind of key you want:</span>
-<span class="s">   (1) RSA and RSA (default)</span>
-<span class="s">   (2) DSA and Elgamal</span>
-<span class="s">   (3) DSA (sign only)</span>
-<span class="s">   (4) RSA (sign only)</span>
-<span class="s">Your selection?</span>
-<span class="s">RSA keys may be between 1024 and 4096 bits long.</span>
-<span class="s">What keysize do you want? (2048)</span>
-<span class="s">Requested keysize is 2048 bits</span>
-<span class="s">Please specify how long the key should be valid.</span>
-<span class="s">         0 = key does not expire</span>
-<span class="s">      &lt;n&gt;  = key expires in n days</span>
-<span class="s">      &lt;n&gt;w = key expires in n weeks</span>
-<span class="s">      &lt;n&gt;m = key expires in n months</span>
-<span class="s">      &lt;n&gt;y = key expires in n years</span>
-<span class="s">Key is valid for? (0)</span>
-<span class="s">Key does not expire at all</span>
-<span class="s">Is this correct? (y/N) y</span>
+gpg: directory <span class="sb">`</span>/root/.gnupg<span class="s1">&#39; created</span>
+<span class="s1">gpg: new configuration file `/root/.gnupg/gpg.conf&#39;</span> created
+gpg: WARNING: options in <span class="sb">`</span>/root/.gnupg/gpg.conf<span class="s1">&#39; are not yet active during this run</span>
+<span class="s1">gpg: keyring `/root/.gnupg/secring.gpg&#39;</span> created
+gpg: keyring <span class="sb">`</span>/root/.gnupg/pubring.gpg<span class="s1">&#39; created</span>
+<span class="s1">Please select what kind of key you want:</span>
+<span class="s1">   (1) RSA and RSA (default)</span>
+<span class="s1">   (2) DSA and Elgamal</span>
+<span class="s1">   (3) DSA (sign only)</span>
+<span class="s1">   (4) RSA (sign only)</span>
+<span class="s1">Your selection?</span>
+<span class="s1">RSA keys may be between 1024 and 4096 bits long.</span>
+<span class="s1">What keysize do you want? (2048)</span>
+<span class="s1">Requested keysize is 2048 bits</span>
+<span class="s1">Please specify how long the key should be valid.</span>
+<span class="s1">         0 = key does not expire</span>
+<span class="s1">      &lt;n&gt;  = key expires in n days</span>
+<span class="s1">      &lt;n&gt;w = key expires in n weeks</span>
+<span class="s1">      &lt;n&gt;m = key expires in n months</span>
+<span class="s1">      &lt;n&gt;y = key expires in n years</span>
+<span class="s1">Key is valid for? (0)</span>
+<span class="s1">Key does not expire at all</span>
+<span class="s1">Is this correct? (y/N) y</span>
 
-<span class="s">GnuPG needs to construct a user ID to identify your key.</span>
+<span class="s1">GnuPG needs to construct a user ID to identify your key.</span>
 
-<span class="s">Real name: Thibaut</span>
-<span class="s">Email address: myemail@company.com</span>
-<span class="s">Comment: Passbolt key</span>
-<span class="s">You selected this USER-ID:</span>
-<span class="s">    &quot;Thibaut (Passbolt key) &lt;myemail@company.com&gt;&quot;</span>
+<span class="s1">Real name: Thibaut</span>
+<span class="s1">Email address: myemail@company.com</span>
+<span class="s1">Comment: Passbolt key</span>
+<span class="s1">You selected this USER-ID:</span>
+<span class="s1">    &quot;Thibaut (Passbolt key) &lt;myemail@company.com&gt;&quot;</span>
 
-<span class="s">Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O</span>
-<span class="s">You need a Passphrase to protect your secret key.</span>
+<span class="s1">Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O</span>
+<span class="s1">You need a Passphrase to protect your secret key.</span>
 
-<span class="s">You don&#39;</span><span class="n">t</span> <span class="n">want</span> <span class="n">a</span> <span class="n">passphrase</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">probably</span> <span class="n">a</span> <span class="o">*</span><span class="n">bad</span><span class="o">*</span> <span class="n">idea</span><span class="o">!</span>
-<span class="n">I</span> <span class="n">will</span> <span class="k">do</span> <span class="n">it</span> <span class="n">anyway</span><span class="o">.</span>  <span class="n">You</span> <span class="n">can</span> <span class="n">change</span> <span class="n">your</span> <span class="n">passphrase</span> <span class="n">at</span> <span class="n">any</span> <span class="nb">time</span><span class="p">,</span>
-<span class="n">using</span> <span class="n">this</span> <span class="n">program</span> <span class="n">with</span> <span class="n">the</span> <span class="n">option</span> <span class="s">&quot;--edit-key&quot;</span><span class="o">.</span>
+<span class="s1">You don&#39;</span>t want a passphrase - this is probably a *bad* idea!
+I will <span class="k">do </span>it anyway.  You can change your passphrase at any <span class="nb">time</span>,
+using this program with the option <span class="s2">&quot;--edit-key&quot;</span>.
 
-<span class="p">[</span><span class="o">...</span><span class="p">]</span>
-<span class="n">gpg:</span> <span class="n">checking</span> <span class="n">the</span> <span class="n">trustdb</span>
-<span class="n">gpg:</span> <span class="mi">3</span> <span class="n">marginal</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">needed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">complete</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">needed</span><span class="p">,</span> <span class="n">PGP</span> <span class="n">trust</span> <span class="n">model</span>
-<span class="n">gpg:</span> <span class="n">depth:</span> <span class="mi">0</span>  <span class="n">valid:</span>   <span class="mi">1</span>  <span class="n">signed:</span>   <span class="mi">0</span>  <span class="n">trust:</span> <span class="mi">0</span><span class="o">-</span><span class="p">,</span> <span class="mi">0</span><span class="sx">q, 0n,</span> <span class="mi">0</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="n">u</span>
-<span class="n">pub</span>   <span class="mi">2048</span><span class="n">R</span><span class="o">/</span><span class="mi">3</span><span class="n">BBEEE74</span> <span class="mi">2018</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span>
-      <span class="n">Key</span> <span class="n">fingerprint</span> <span class="o">=</span> <span class="mi">2600</span> <span class="mi">644</span><span class="n">A</span> <span class="n">F1AC</span> <span class="mo">07</span><span class="n">F8</span> <span class="n">A609</span>  <span class="n">BC05</span> <span class="mi">5</span><span class="n">EB9</span> <span class="mi">1877</span> <span class="mi">3</span><span class="n">BBE</span> <span class="n">EE74</span>
-<span class="n">uid</span>                  <span class="n">Thibaut</span> <span class="p">(</span><span class="n">Passbolt</span> <span class="n">key</span><span class="p">)</span> <span class="sr">&lt;myemail@company.com&gt;</span>
-<span class="k">sub   </span><span class="err">2048</span><span class="nf">R</span><span class="err">/01</span><span class="nf">DEAE4A</span> <span class="err">2018-02-18</span>
+<span class="o">[</span>...<span class="o">]</span>
+gpg: checking the trustdb
+gpg: 3 marginal<span class="o">(</span>s<span class="o">)</span> needed, 1 <span class="nb">complete</span><span class="o">(</span>s<span class="o">)</span> needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+pub   2048R/3BBEEE74 2018-02-18
+      Key <span class="nv">fingerprint</span> <span class="o">=</span> 2600 644A F1AC 07F8 A609  BC05 5EB9 1877 3BBE EE74
+uid                  Thibaut <span class="o">(</span>Passbolt key<span class="o">)</span> &lt;myemail@company.com&gt;
+sub   2048R/01DEAE4A 2018-02-18
 </pre></div>
 
 
@@ -286,28 +286,28 @@ Now let's generate a gpg key using the following command : </p>
 
 
 <p>Now we have to export the GPG keys to our passbolt directory : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># gpg --armor --export-secret-keys myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_private_key.key</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># gpg --armor --export myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_public_key.key</span>
+<div class="highlight"><pre>root@centos <span class="c"># gpg --armor --export-secret-keys myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_private_key.key</span>
+root@centos <span class="c"># gpg --armor --export myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_public_key.key</span>
 </pre></div>
 
 
 <p>Then, let's change the permissions for httpd to run passbolt properly.</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># chown -R apache:apache /var/www/html/passbolt/</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># chmod +w -R /var/www/html/passbolt/app/tmp/</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># chmod +w /var/www/html/passbolt/app/webroot/img/public/</span>
+<div class="highlight"><pre>root@centos <span class="c"># chown -R apache:apache /var/www/html/passbolt/</span>
+root@centos <span class="c"># chmod +w -R /var/www/html/passbolt/app/tmp/</span>
+root@centos <span class="c"># chmod +w /var/www/html/passbolt/app/webroot/img/public/</span>
 </pre></div>
 
 
 <h3>Changing configuration files</h3>
 <p>To change the configuration, we're going to copy the default passbolt files and modify them (with a small for loop): </p>
-<div class="highlight"><pre>root@centos # cd /var/www/html/passbolt/app/Config
-root@centos # for file in core database app email ; do cp <span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>.php.default <span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>.php ; done
+<div class="highlight"><pre>root@centos <span class="c"># cd /var/www/html/passbolt/app/Config</span>
+root@centos <span class="c"># for file in core database app email ; do cp ${file}.php.default ${file}.php ; done</span>
 </pre></div>
 
 
 <p>First in the "core.php" file, let's change the lines Security.salt and Security.cipherSeed with different values (you can choose to modify randomly the characters in the chains) : </p>
-<div class="highlight"><pre><span class="nn">Configure::</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Security.salt&#39;</span><span class="p">,</span> <span class="s">&#39;_randomize_a_salt_&#39;</span><span class="p">);</span>
-<span class="nn">Configure::</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Security.cipherSeed&#39;</span><span class="p">,</span> <span class="s">&#39;_randomize_a_seed&#39;</span><span class="p">);</span>
+<div class="highlight"><pre>Configure::write<span class="o">(</span><span class="s1">&#39;Security.salt&#39;</span>, <span class="s1">&#39;_randomize_a_salt_&#39;</span><span class="o">)</span>;
+Configure::write<span class="o">(</span><span class="s1">&#39;Security.cipherSeed&#39;</span>, <span class="s1">&#39;_randomize_a_seed&#39;</span><span class="o">)</span>;
 </pre></div>
 
 
@@ -317,30 +317,30 @@ root@centos # for file in core database app email ; do cp <span class="cp">${</s
 
 
 <p>Now in the "database.php" file, let's modify the entry with the database and user / password we defined earlier. The resulting lines will look like this:</p>
-<div class="highlight"><pre>       <span class="s">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
-       <span class="s">&#39;login&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;mypassboltdbuser&#39;</span><span class="p">,</span>
-       <span class="s">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;mysupercomplicatedpassword&#39;</span><span class="p">,</span>
-       <span class="s">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;passbolt_db&#39;</span><span class="p">,</span>
+<div class="highlight"><pre>       <span class="s1">&#39;host&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;localhost&#39;</span>,
+       <span class="s1">&#39;login&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;mypassboltdbuser&#39;</span>,
+       <span class="s1">&#39;password&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;mysupercomplicatedpassword&#39;</span>,
+       <span class="s1">&#39;database&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;passbolt_db&#39;</span>,
 </pre></div>
 
 
 <p>Then we're going to modify app.php. Before doing that, let's grab the fingerprint of the gpg key we generated earlier using the following command (the awk removes everything before the = sign and all the spaces): </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># gpg --fingerprint myemail@company.com | awk &#39;/fingerprint/ { gsub(/.*= | /,&quot;&quot;)  ; print}&#39;</span>
-<span class="mi">2600644</span><span class="n">AF1AC07F8A609BC055EB918773BBEEE74</span>
+<div class="highlight"><pre>root@centos <span class="c"># gpg --fingerprint myemail@company.com | awk &#39;/fingerprint/ { gsub(/.*= | /,&quot;&quot;)  ; print}&#39;</span>
+2600644AF1AC07F8A609BC055EB918773BBEEE74
 </pre></div>
 
 
 <p>Now to the app.php file. We're going to modify the fingerprint, public and private entries in the serverKey section. The resulting values should look like this: </p>
-<div class="highlight"><pre>    <span class="sr">//</span> <span class="n">Main</span> <span class="n">server</span> <span class="n">key</span>
-        <span class="s">&#39;serverKey&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="sr">//</span> <span class="n">Server</span> <span class="n">private</span> <span class="n">key</span> <span class="n">location</span> <span class="ow">and</span> <span class="n">fingerprint</span>
-            <span class="s">&#39;fingerprint&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;2600644AF1AC07F8A609BC055EB918773BBEEE74&#39;</span><span class="p">,</span>
-            <span class="s">&#39;public&#39;</span> <span class="o">=&gt;</span> <span class="n">APP</span> <span class="o">.</span> <span class="s">&#39;Config&#39;</span> <span class="o">.</span> <span class="n">DS</span> <span class="o">.</span> <span class="s">&#39;gpg&#39;</span> <span class="o">.</span> <span class="n">DS</span> <span class="o">.</span> <span class="s">&#39;server_public_key.key&#39;</span><span class="p">,</span>
-            <span class="s">&#39;private&#39;</span> <span class="o">=&gt;</span> <span class="n">APP</span> <span class="o">.</span> <span class="s">&#39;Config&#39;</span> <span class="o">.</span> <span class="n">DS</span> <span class="o">.</span> <span class="s">&#39;gpg&#39;</span> <span class="o">.</span> <span class="n">DS</span> <span class="o">.</span> <span class="s">&#39;server_private_key.key&#39;</span><span class="p">,</span>
+<div class="highlight"><pre>    // Main server key
+        <span class="s1">&#39;serverKey&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
+            // Server private key location and fingerprint
+            <span class="s1">&#39;fingerprint&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;2600644AF1AC07F8A609BC055EB918773BBEEE74&#39;</span>,
+            <span class="s1">&#39;public&#39;</span> <span class="o">=</span>&gt; APP . <span class="s1">&#39;Config&#39;</span> . DS . <span class="s1">&#39;gpg&#39;</span> . DS . <span class="s1">&#39;server_public_key.key&#39;</span>,
+            <span class="s1">&#39;private&#39;</span> <span class="o">=</span>&gt; APP . <span class="s1">&#39;Config&#39;</span> . DS . <span class="s1">&#39;gpg&#39;</span> . DS . <span class="s1">&#39;server_private_key.key&#39;</span>,
 
-            <span class="sr">//</span> <span class="n">PHP</span> <span class="n">Gnupg</span> <span class="n">module</span> <span class="n">currently</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">passphrase</span><span class="p">,</span> <span class="n">please</span> <span class="n">leave</span> <span class="n">blank</span>
-            <span class="s">&#39;passphrase&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span>
-            <span class="p">]</span>
+            // PHP Gnupg module currently does not support passphrase, please leave blank
+            <span class="s1">&#39;passphrase&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;&#39;</span>
+            <span class="o">]</span>
 </pre></div>
 
 
@@ -351,17 +351,17 @@ root@centos # for file in core database app email ; do cp <span class="cp">${</s
 
 <h3>Setup GPG for apache</h3>
 <p>We need to setup apache for using the GPG keys we've setup. To do that, we need to create a .gnupg directory in apache's home directory.</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># grep apache /etc/passwd</span>
-<span class="n">apache:x:48:48:Apache:</span><span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/httpd:/s</span><span class="n">bin</span><span class="o">/</span><span class="n">nologin</span>
+<div class="highlight"><pre>root@centos <span class="c"># grep apache /etc/passwd</span>
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
 </pre></div>
 
 
 <p>So apache's home is /usr/share/httpd. This folder is owned by root, so let's create the .gnupg folder manually and allow apache to use it.</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># mkdir /usr/share/httpd/.gnupg</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># chown apache:apache /usr/share/httpd/.gnupg/</span>
-<span class="n">root</span><span class="nv">@centos</span> <span class="c1"># su -c &quot;gpg --list-keys&quot; -s /bin/bash apache</span>
-<span class="n">gpg:</span> <span class="n">keyring</span> <span class="err">`</span><span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/httpd/</span><span class="o">.</span><span class="n">gnupg</span><span class="o">/</span><span class="n">pubring</span><span class="o">.</span><span class="n">gpg</span><span class="err">&#39;</span> <span class="n">created</span>
-<span class="n">gpg:</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/httpd/</span><span class="o">.</span><span class="n">gnupg</span><span class="o">/</span><span class="n">trustdb</span><span class="o">.</span><span class="n">gpg:</span> <span class="n">trustdb</span> <span class="n">created</span>
+<div class="highlight"><pre>root@centos <span class="c"># mkdir /usr/share/httpd/.gnupg</span>
+root@centos <span class="c"># chown apache:apache /usr/share/httpd/.gnupg/</span>
+root@centos <span class="c"># su -c &quot;gpg --list-keys&quot; -s /bin/bash apache</span>
+gpg: keyring <span class="sb">`</span>/usr/share/httpd/.gnupg/pubring.gpg<span class="err">&#39;</span> created
+gpg: /usr/share/httpd/.gnupg/trustdb.gpg: trustdb created
 </pre></div>
 
 
@@ -385,36 +385,36 @@ root@centos # for file in core database app email ; do cp <span class="cp">${</s
 
 
 <p>With the following content: </p>
-<div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>
+<div class="highlight"><pre>&lt;VirtualHost *:80&gt;
         ServerName passbolt.home
         DocumentRoot /var/www/html/passbolt/
         DirectoryIndex  index.php
-        <span class="nt">&lt;FilesMatch</span> <span class="err">\.php$</span><span class="nt">&gt;</span>
-                SetHandler &quot;proxy:fcgi://127.0.0.1:9000&quot;
-        <span class="nt">&lt;/FilesMatch&gt;</span>
-        <span class="nt">&lt;Directory</span> <span class="err">/var/www/html/passbolt</span><span class="nt">/&gt;</span>
+        &lt;FilesMatch <span class="se">\.</span>php<span class="nv">$&gt;</span>
+                SetHandler <span class="s2">&quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
+        &lt;/FilesMatch&gt;
+        &lt;Directory /var/www/html/passbolt/&gt;
                 Options FollowSymLinks
                 AllowOverride All
                 Require all granted
-        <span class="nt">&lt;/Directory&gt;</span>
+        &lt;/Directory&gt;
         LogLevel info
         CustomLog /var/log/httpd/passbolt.log combined
 
 
-<span class="nt">&lt;/VirtualHost&gt;</span>
-<span class="nt">&lt;VirtualHost</span> <span class="err">*:443</span><span class="nt">&gt;</span>
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:443&gt;
         ServerName passbolt.home
         DocumentRoot /var/www/html/passbolt/
         DirectoryIndex index.php
-        <span class="nt">&lt;FilesMatch</span> <span class="err">\.php$</span><span class="nt">&gt;</span>
+        &lt;FilesMatch <span class="se">\.</span>php<span class="nv">$&gt;</span>
                 SSLOptions +StdEnvVars
-                SetHandler &quot;proxy:fcgi://127.0.0.1:9000&quot;
-        <span class="nt">&lt;/FilesMatch&gt;</span>
-        <span class="nt">&lt;Directory</span> <span class="err">/var/www/html/passbolt</span><span class="nt">/&gt;</span>
+                SetHandler <span class="s2">&quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
+        &lt;/FilesMatch&gt;
+        &lt;Directory /var/www/html/passbolt/&gt;
                 Options FollowSymLinks
                 AllowOverride All
                 Require all granted
-        <span class="nt">&lt;/Directory&gt;</span>
+        &lt;/Directory&gt;
         LogLevel debug
         CustomLog /var/log/httpd/passbolt_ssl.log combined
         SSLEngine on
@@ -423,32 +423,32 @@ root@centos # for file in core database app email ; do cp <span class="cp">${</s
         SSLCertificateFile /etc/pki/tls/certs/localhost.crt
         SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
 
-<span class="nt">&lt;/VirtualHost&gt;</span>
+&lt;/VirtualHost&gt;
 </pre></div>
 
 
 <p>Now, we will enable and start apache using the following commands : </p>
-<div class="highlight"><pre><span class="c1"># systemctl enable httpd</span>
-<span class="n">Created</span> <span class="nb">symlink</span> <span class="n">from</span> <span class="sr">/etc/s</span><span class="n">ystemd</span><span class="sr">/system/m</span><span class="n">ulti</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span><span class="sr">/httpd.service to /</span><span class="n">usr</span><span class="sr">/lib/s</span><span class="n">ystemd</span><span class="sr">/system/</span><span class="n">httpd</span><span class="o">.</span><span class="n">service</span><span class="o">.</span>
-<span class="c1"># systemctl start httpd</span>
-<span class="c1"># systemctl status httpd</span>
-<span class="err">●</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span> <span class="o">-</span> <span class="n">The</span> <span class="n">Apache</span> <span class="n">HTTP</span> <span class="n">Server</span>
-   <span class="n">Loaded:</span> <span class="n">loaded</span> <span class="p">(</span><span class="sr">/usr/</span><span class="n">lib</span><span class="sr">/systemd/s</span><span class="n">ystem</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">service</span><span class="p">;</span> <span class="n">enabled</span><span class="p">;</span> <span class="n">vendor</span> <span class="n">preset:</span> <span class="n">disabled</span><span class="p">)</span>
-   <span class="n">Active:</span> <span class="n">active</span> <span class="p">(</span><span class="n">running</span><span class="p">)</span> <span class="n">since</span> <span class="n">Sun</span> <span class="mi">2018</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">22</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">37</span> <span class="n">CET</span><span class="p">;</span> <span class="mi">3</span><span class="n">s</span> <span class="n">ago</span>
-     <span class="n">Docs:</span> <span class="n">man:httpd</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-           <span class="n">man:apachectl</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
- <span class="n">Main</span> <span class="n">PID:</span> <span class="mi">2071</span> <span class="p">(</span><span class="n">httpd</span><span class="p">)</span>
-   <span class="n">Status:</span> <span class="s">&quot;Processing requests...&quot;</span>
-   <span class="n">CGroup:</span> <span class="sr">/system.slice/</span><span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
-           <span class="err">├─</span><span class="mi">2071</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
-           <span class="err">├─</span><span class="mi">2072</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
-           <span class="err">├─</span><span class="mi">2073</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
-           <span class="err">├─</span><span class="mi">2074</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
-           <span class="err">├─</span><span class="mi">2075</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
-           <span class="err">└─</span><span class="mi">2076</span> <span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">httpd</span> <span class="o">-</span><span class="n">DFOREGROUND</span>
+<div class="highlight"><pre><span class="c"># systemctl enable httpd</span>
+Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+<span class="c"># systemctl start httpd</span>
+<span class="c"># systemctl status httpd</span>
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Sun 2018-02-18 22:41:37 CET; 3s ago
+     Docs: man:httpd<span class="o">(</span>8<span class="o">)</span>
+           man:apachectl<span class="o">(</span>8<span class="o">)</span>
+ Main PID: 2071 <span class="o">(</span>httpd<span class="o">)</span>
+   Status: <span class="s2">&quot;Processing requests...&quot;</span>
+   CGroup: /system.slice/httpd.service
+           ├─2071 /usr/sbin/httpd -DFOREGROUND
+           ├─2072 /usr/sbin/httpd -DFOREGROUND
+           ├─2073 /usr/sbin/httpd -DFOREGROUND
+           ├─2074 /usr/sbin/httpd -DFOREGROUND
+           ├─2075 /usr/sbin/httpd -DFOREGROUND
+           └─2076 /usr/sbin/httpd -DFOREGROUND
 
-<span class="n">Feb</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">37</span> <span class="n">centos</span><span class="o">-</span><span class="n">kvm</span> <span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Starting</span> <span class="n">The</span> <span class="n">Apache</span> <span class="n">HTTP</span> <span class="n">Server</span><span class="o">...</span>
-<span class="n">Feb</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">37</span> <span class="n">centos</span><span class="o">-</span><span class="n">kvm</span> <span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Started</span> <span class="n">The</span> <span class="n">Apache</span> <span class="n">HTTP</span> <span class="n">Server</span><span class="o">.</span>
+Feb 18 22:41:37 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Starting The Apache HTTP Server...
+Feb 18 22:41:37 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Started The Apache HTTP Server.
 </pre></div>
 
 
