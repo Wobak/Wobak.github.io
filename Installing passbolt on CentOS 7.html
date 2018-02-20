@@ -87,41 +87,41 @@
 <p>We're going to see in this tutorial how to install <a href="https://www.passbolt.com/">Passbolt</a> on a CentOS 7 machine with apache, php7-fpm and mariadb.</p>
 <p>We will consider that the tutorial starts after the CentOS machine is installed, and we're going to install everything that is necessary for this to work properly.</p>
 <p>All the commands that we are going to need in this tutorial are going to require root access, so you can either type "sudo" in front of each of them, or switch to the root user with the command:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="o">-</span><span class="n">i</span>
+<div class="highlight"><pre><span class="gp">$</span> sudo -i
 </pre></div>
 
 
 <p>First of all we're going to install apache, mariadb and enable the scl &amp; epel repository (see <a href="https://wiki.centos.org/AdditionalResources/Repositories/SCL">here</a> and <a href="https://fedoraproject.org/wiki/EPEL">here</a> for more details).</p>
-<div class="highlight"><pre><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">centos</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="n">scl</span> <span class="n">httpd</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span> <span class="n">wget</span> <span class="n">mod_ssl</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span> <span class="n">git</span>
+<div class="highlight"><pre><span class="gp">#</span> yum -y install centos-release-scl httpd mariadb-server wget mod_ssl epel-release git
 </pre></div>
 
 
 <p>To confirm the new repo are installed, type </p>
-<div class="highlight"><pre>root@centos <span class="c"># yum repolist</span>
-Loaded plugins: fastestmirror
-centos-sclo-rh                          | 2.9 kB  00:00:00
-centos-sclo-sclo                        | 2.9 kB  00:00:00
-epel/x86_64/metalink                    |  25 kB  00:00:00
-epel                                    | 4.7 kB  00:00:00
-<span class="o">(</span>1/5<span class="o">)</span>: centos-sclo-sclo/x86_64/primary_db               | 196 kB  00:00:00
-<span class="o">(</span>2/5<span class="o">)</span>: epel/x86_64/group_gz                             | 266 kB  00:00:00
-<span class="o">(</span>3/5<span class="o">)</span>: epel/x86_64/updateinfo                           | 882 kB  00:00:00
-<span class="o">(</span>4/5<span class="o">)</span>: epel/x86_64/primary_db                           | 6.2 MB  00:00:01
-<span class="o">(</span>5/5<span class="o">)</span>: centos-sclo-rh/x86_64/primary_db                 | 3.0 MB  00:00:01
+<div class="highlight"><pre><span class="gp">#</span> yum repolist
+<span class="go">Loaded plugins: fastestmirror</span>
+<span class="go">centos-sclo-rh                          | 2.9 kB  00:00:00</span>
+<span class="go">centos-sclo-sclo                        | 2.9 kB  00:00:00</span>
+<span class="go">epel/x86_64/metalink                    |  25 kB  00:00:00</span>
+<span class="go">epel                                    | 4.7 kB  00:00:00</span>
+<span class="go">(1/5): centos-sclo-sclo/x86_64/primary_db               | 196 kB  00:00:00</span>
+<span class="go">(2/5): epel/x86_64/group_gz                             | 266 kB  00:00:00</span>
+<span class="go">(3/5): epel/x86_64/updateinfo                           | 882 kB  00:00:00</span>
+<span class="go">(4/5): epel/x86_64/primary_db                           | 6.2 MB  00:00:01</span>
+<span class="go">(5/5): centos-sclo-rh/x86_64/primary_db                 | 3.0 MB  00:00:01</span>
 
-Loading mirror speeds from cached hostfile
- * base: distrib-coffee.ipsl.jussieu.fr
- * epel: fr.mirror.babylon.network
- * extras: distrib-coffee.ipsl.jussieu.fr
- * updates: distrib-coffee.ipsl.jussieu.fr
-repo id                     repo name                                               status
-base/7/x86_64               CentOS-7 - Base                                         9,591
-centos-sclo-rh/x86_64       CentOS-7 - SCLo rh                                      6,640
-centos-sclo-sclo/x86_64     CentOS-7 - SCLo sclo                                    500
-epel/x86_64                 Extra Packages <span class="k">for </span>Enterprise Linux 7 - x86_64          12,289
-extras/7/x86_64             CentOS-7 - Extras                                       388
-updates/7/x86_64            CentOS-7 - Updates                                      1,929
-repolist: 31,337
+<span class="go">Loading mirror speeds from cached hostfile</span>
+<span class="go"> * base: distrib-coffee.ipsl.jussieu.fr</span>
+<span class="go"> * epel: fr.mirror.babylon.network</span>
+<span class="go"> * extras: distrib-coffee.ipsl.jussieu.fr</span>
+<span class="go"> * updates: distrib-coffee.ipsl.jussieu.fr</span>
+<span class="go">repo id                     repo name                                               status</span>
+<span class="go">base/7/x86_64               CentOS-7 - Base                                         9,591</span>
+<span class="go">centos-sclo-rh/x86_64       CentOS-7 - SCLo rh                                      6,640</span>
+<span class="go">centos-sclo-sclo/x86_64     CentOS-7 - SCLo sclo                                    500</span>
+<span class="go">epel/x86_64                 Extra Packages for Enterprise Linux 7 - x86_64          12,289</span>
+<span class="go">extras/7/x86_64             CentOS-7 - Extras                                       388</span>
+<span class="go">updates/7/x86_64            CentOS-7 - Updates                                      1,929</span>
+<span class="go">repolist: 31,337</span>
 </pre></div>
 
 
@@ -135,13 +135,13 @@ repolist: 31,337
 </ol>
 <h2>1. PHP-FPM</h2>
 <p>Now we can install and configure php7-fpm which is part of the SCL repository <a href="https://wobak.github.io/install%20php71%20on%20CentOS7.4.html">as described in another article</a></p>
-<div class="highlight"><pre><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">cli</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mysqlnd</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">pdo</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">gd</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">xml</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">xmlrpc</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mbstring</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">json</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">ldap</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">pear</span><span class="o">.</span><span class="n">noarch</span> <span class="n">gcc</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span> <span class="n">gpgme</span><span class="o">-</span><span class="n">devel</span>
+<div class="highlight"><pre><span class="gp">#</span> yum -y install rh-php71.x86_64 rh-php71-php-cli.x86_64 rh-php71-php-common.x86_64 rh-php71-php-fpm.x86_64 rh-php71-php-mysqlnd.x86_64 rh-php71-php-pdo.x86_64 rh-php71-php-gd.x86_64 rh-php71-php-xml.x86_64 rh-php71-php-xmlrpc.x86_64 rh-php71-php-mbstring.x86_64 rh-php71-php-json.x86_64 rh-php71-php-ldap.x86_64 rh-php71-php-pear.noarch gcc rh-php71-php-devel.x86_64 gpgme-devel
 </pre></div>
 
 
 <p>Before starting php71-fpm, we're going to install gnupg for passbolt to work properly. To do that, let's open a bash shell with the scl php enabled : </p>
-<div class="highlight"><pre><span class="n">scl</span> <span class="n">enable</span> <span class="n">rh</span><span class="o">-</span><span class="n">php71</span> <span class="n">bash</span>
-<span class="n">pecl</span> <span class="n">install</span> <span class="n">gnupg</span>
+<div class="highlight"><pre><span class="gp">#</span> scl <span class="nb">enable </span>rh-php71 bash
+<span class="gp">#</span> pecl install gnupg
 </pre></div>
 
 
@@ -151,57 +151,57 @@ repolist: 31,337
 
 
 <p>Once you've done it, we can enable &amp; start our php-fpm service</p>
-<div class="highlight"><pre>root@centos <span class="c"># systemctl enable rh-php71-php-fpm.service</span>
-Created symlink from /etc/systemd/system/multi-user.target.wants/rh-php71-php-fpm.service to /usr/lib/systemd/system/rh-php71-php-fpm.service.
-root@centos <span class="c"># systemctl start rh-php71-php-fpm.service</span>
-root@centos <span class="c"># systemctl status rh-php71-php-fpm.service</span>
-● rh-php71-php-fpm.service - The PHP FastCGI Process Manager
-   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/rh-php71-php-fpm.service; enabled; vendor preset: disabled<span class="o">)</span>
-   Active: active <span class="o">(</span>running<span class="o">)</span> since Wed 2018-01-10 20:01:02 CET; 3s ago
- Main PID: 4343 <span class="o">(</span>php-fpm<span class="o">)</span>
-   Status: <span class="s2">&quot;Ready to handle connections&quot;</span>
-   CGroup: /system.slice/rh-php71-php-fpm.service
-           ├─4343 php-fpm: master process <span class="o">(</span>/etc/opt/rh/rh-php71/php-fpm.conf<span class="o">)</span>
-           ├─4344 php-fpm: pool www
-           ├─4345 php-fpm: pool www
-           ├─4346 php-fpm: pool www
-           ├─4347 php-fpm: pool www
-           └─4348 php-fpm: pool www
+<div class="highlight"><pre><span class="gp">#</span> systemctl <span class="nb">enable </span>rh-php71-php-fpm.service
+<span class="go">Created symlink from /etc/systemd/system/multi-user.target.wants/rh-php71-php-fpm.service to /usr/lib/systemd/system/rh-php71-php-fpm.service.</span>
+<span class="gp">#</span> systemctl start rh-php71-php-fpm.service
+<span class="gp">#</span> systemctl status rh-php71-php-fpm.service
+<span class="go">● rh-php71-php-fpm.service - The PHP FastCGI Process Manager</span>
+<span class="go">   Loaded: loaded (/usr/lib/systemd/system/rh-php71-php-fpm.service; enabled; vendor preset: disabled)</span>
+<span class="go">   Active: active (running) since Wed 2018-01-10 20:01:02 CET; 3s ago</span>
+<span class="go"> Main PID: 4343 (php-fpm)</span>
+<span class="go">   Status: &quot;Ready to handle connections&quot;</span>
+<span class="go">   CGroup: /system.slice/rh-php71-php-fpm.service</span>
+<span class="go">           ├─4343 php-fpm: master process (/etc/opt/rh/rh-php71/php-fpm.conf)</span>
+<span class="go">           ├─4344 php-fpm: pool www</span>
+<span class="go">           ├─4345 php-fpm: pool www</span>
+<span class="go">           ├─4346 php-fpm: pool www</span>
+<span class="go">           ├─4347 php-fpm: pool www</span>
+<span class="go">           └─4348 php-fpm: pool www</span>
 
-Jan 10 20:01:02 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Starting The PHP FastCGI Process Manager...
-Jan 10 20:01:02 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Started The PHP FastCGI Process Manager.
+<span class="go">Jan 10 20:01:02 centos-kvm systemd[1]: Starting The PHP FastCGI Process Manager...</span>
+<span class="go">Jan 10 20:01:02 centos-kvm systemd[1]: Started The PHP FastCGI Process Manager.</span>
 </pre></div>
 
 
 <p>Now that our php is ready to run, we'll go along with the rest of the steps.</p>
 <h2>2. MariaDB</h2>
 <p>Now we need the database to be ready to run. Let's enable and start mariadb. If you don't have already a mariadb installed and secured, I strongly suggest you to run the <a href="https://mariadb.com/kb/en/library/mysql_secure_installation">mysql_secure_installation</a> command after starting the mariadb service for the first time, as described here : </p>
-<div class="highlight"><pre>root@centos <span class="c"># systemctl enable mariadb.service</span>
-Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service to /usr/lib/systemd/system/mariadb.service.
-root@centos <span class="c"># systemctl start mariadb.service</span>
-root@centos <span class="c"># mysql_secure_installation</span>
-...
+<div class="highlight"><pre><span class="gp">#</span> systemctl <span class="nb">enable </span>mariadb.service
+<span class="go">Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service to /usr/lib/systemd/system/mariadb.service.</span>
+<span class="gp">#</span> systemctl start mariadb.service
+<span class="gp">#</span> mysql_secure_installation
+<span class="go">...</span>
 </pre></div>
 
 
 <p>Now that our service is running properly, let's create the database and dedicated user. Even if the passbolt installer offers to do this, I think it's better to be using one you can setup yourself : </p>
-<div class="highlight"><pre>root@centos <span class="c"># mysql -p</span>
-Enter password:
-Welcome to the MariaDB monitor.  Commands end with ; or <span class="se">\g</span>.
-Your MariaDB connection id is 10
-Server version: 5.5.56-MariaDB MariaDB Server
+<div class="highlight"><pre><span class="gp">#</span> mysql -p
+<span class="go">Enter password:</span>
+<span class="go">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span>
+<span class="go">Your MariaDB connection id is 10</span>
+<span class="go">Server version: 5.5.56-MariaDB MariaDB Server</span>
 
-Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+<span class="go">Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.</span>
 
-Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for </span>help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+<span class="go">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.</span>
 
-MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; create database passbolt_db;
-Query OK, 1 row affected <span class="o">(</span>0.00 sec<span class="o">)</span>
+<span class="go">MariaDB [(none)]&gt; create database passbolt_db;</span>
+<span class="go">Query OK, 1 row affected (0.00 sec)</span>
 
-MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; grant all privileges on passbolt_db.* to <span class="s1">&#39;mypassboltdbuser&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;mysupercomplicatedpassword&#39;</span>;
-Query OK, 0 rows affected <span class="o">(</span>0.00 sec<span class="o">)</span>
+<span class="go">MariaDB [(none)]&gt; grant all privileges on passbolt_db.* to &#39;mypassboltdbuser&#39;@&#39;localhost&#39; identified by &#39;mysupercomplicatedpassword&#39;;</span>
+<span class="go">Query OK, 0 rows affected (0.00 sec)</span>
 
-MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
+<span class="go">MariaDB [(none)]&gt; quit</span>
 </pre></div>
 
 
@@ -212,167 +212,167 @@ MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; quit
 <p>If your machine is a VM, you might not have enough entropy to run gpg commands and generate a key.</p>
 <p>To do that, you need to first <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-guest_virtual_machine_device_configuration-random_number_generator_device">add a rng device</a> to your VM (requires a shutdown / restart).</p>
 <p>Once this is done, you should have enough entropy to generate keys. To confirm, type the following command : </p>
-<div class="highlight"><pre>root@centos <span class="c"># cat /proc/sys/kernel/random/entropy_avail</span>
-1125
+<div class="highlight"><pre><span class="gp">#</span> cat /proc/sys/kernel/random/entropy_avail
+<span class="go">1125</span>
 </pre></div>
 
 
 <p>Above 1000 should be OK for us (max value is 4096).
 Now let's generate a gpg key using the following command : </p>
-<div class="highlight"><pre><span class="n">gpg</span> <span class="o">--</span><span class="n">gen</span><span class="o">-</span><span class="n">key</span>
+<div class="highlight"><pre><span class="gp">#</span> gpg --gen-key
 </pre></div>
 
 
 <p>You should fill in all the info in there, but DO NOT ENTER A PASSPHRASE (passbolt can't handle it yet).</p>
-<div class="highlight"><pre>root@centos <span class="c"># gpg --gen-key</span>
-gpg <span class="o">(</span>GnuPG<span class="o">)</span> 2.0.22; Copyright <span class="o">(</span>C<span class="o">)</span> 2013 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
+<div class="highlight"><pre><span class="gp">#</span> gpg --gen-key
+<span class="go">gpg (GnuPG) 2.0.22; Copyright (C) 2013 Free Software Foundation, Inc.</span>
+<span class="go">This is free software: you are free to change and redistribute it.</span>
+<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
 
-gpg: directory <span class="sb">`</span>/root/.gnupg<span class="s1">&#39; created</span>
-<span class="s1">gpg: new configuration file `/root/.gnupg/gpg.conf&#39;</span> created
-gpg: WARNING: options in <span class="sb">`</span>/root/.gnupg/gpg.conf<span class="s1">&#39; are not yet active during this run</span>
-<span class="s1">gpg: keyring `/root/.gnupg/secring.gpg&#39;</span> created
-gpg: keyring <span class="sb">`</span>/root/.gnupg/pubring.gpg<span class="s1">&#39; created</span>
-<span class="s1">Please select what kind of key you want:</span>
-<span class="s1">   (1) RSA and RSA (default)</span>
-<span class="s1">   (2) DSA and Elgamal</span>
-<span class="s1">   (3) DSA (sign only)</span>
-<span class="s1">   (4) RSA (sign only)</span>
-<span class="s1">Your selection?</span>
-<span class="s1">RSA keys may be between 1024 and 4096 bits long.</span>
-<span class="s1">What keysize do you want? (2048)</span>
-<span class="s1">Requested keysize is 2048 bits</span>
-<span class="s1">Please specify how long the key should be valid.</span>
-<span class="s1">         0 = key does not expire</span>
-<span class="s1">      &lt;n&gt;  = key expires in n days</span>
-<span class="s1">      &lt;n&gt;w = key expires in n weeks</span>
-<span class="s1">      &lt;n&gt;m = key expires in n months</span>
-<span class="s1">      &lt;n&gt;y = key expires in n years</span>
-<span class="s1">Key is valid for? (0)</span>
-<span class="s1">Key does not expire at all</span>
-<span class="s1">Is this correct? (y/N) y</span>
+<span class="go">gpg: directory `/root/.gnupg&#39; created</span>
+<span class="go">gpg: new configuration file `/root/.gnupg/gpg.conf&#39; created</span>
+<span class="go">gpg: WARNING: options in `/root/.gnupg/gpg.conf&#39; are not yet active during this run</span>
+<span class="go">gpg: keyring `/root/.gnupg/secring.gpg&#39; created</span>
+<span class="go">gpg: keyring `/root/.gnupg/pubring.gpg&#39; created</span>
+<span class="go">Please select what kind of key you want:</span>
+<span class="go">   (1) RSA and RSA (default)</span>
+<span class="go">   (2) DSA and Elgamal</span>
+<span class="go">   (3) DSA (sign only)</span>
+<span class="go">   (4) RSA (sign only)</span>
+<span class="go">Your selection?</span>
+<span class="go">RSA keys may be between 1024 and 4096 bits long.</span>
+<span class="go">What keysize do you want? (2048)</span>
+<span class="go">Requested keysize is 2048 bits</span>
+<span class="go">Please specify how long the key should be valid.</span>
+<span class="go">         0 = key does not expire</span>
+<span class="go">      &lt;n&gt;  = key expires in n days</span>
+<span class="go">      &lt;n&gt;w = key expires in n weeks</span>
+<span class="go">      &lt;n&gt;m = key expires in n months</span>
+<span class="go">      &lt;n&gt;y = key expires in n years</span>
+<span class="go">Key is valid for? (0)</span>
+<span class="go">Key does not expire at all</span>
+<span class="go">Is this correct? (y/N) y</span>
 
-<span class="s1">GnuPG needs to construct a user ID to identify your key.</span>
+<span class="go">GnuPG needs to construct a user ID to identify your key.</span>
 
-<span class="s1">Real name: Thibaut</span>
-<span class="s1">Email address: myemail@company.com</span>
-<span class="s1">Comment: Passbolt key</span>
-<span class="s1">You selected this USER-ID:</span>
-<span class="s1">    &quot;Thibaut (Passbolt key) &lt;myemail@company.com&gt;&quot;</span>
+<span class="go">Real name: Thibaut</span>
+<span class="go">Email address: myemail@company.com</span>
+<span class="go">Comment: Passbolt key</span>
+<span class="go">You selected this USER-ID:</span>
+<span class="go">    &quot;Thibaut (Passbolt key) &lt;myemail@company.com&gt;&quot;</span>
 
-<span class="s1">Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O</span>
-<span class="s1">You need a Passphrase to protect your secret key.</span>
+<span class="go">Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O</span>
+<span class="go">You need a Passphrase to protect your secret key.</span>
 
-<span class="s1">You don&#39;</span>t want a passphrase - this is probably a *bad* idea!
-I will <span class="k">do </span>it anyway.  You can change your passphrase at any <span class="nb">time</span>,
-using this program with the option <span class="s2">&quot;--edit-key&quot;</span>.
+<span class="go">You don&#39;t want a passphrase - this is probably a *bad* idea!</span>
+<span class="go">I will do it anyway.  You can change your passphrase at any time,</span>
+<span class="go">using this program with the option &quot;--edit-key&quot;.</span>
 
-<span class="o">[</span>...<span class="o">]</span>
-gpg: checking the trustdb
-gpg: 3 marginal<span class="o">(</span>s<span class="o">)</span> needed, 1 <span class="nb">complete</span><span class="o">(</span>s<span class="o">)</span> needed, PGP trust model
-gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
-pub   2048R/3BBEEE74 2018-02-18
-      Key <span class="nv">fingerprint</span> <span class="o">=</span> 2600 644A F1AC 07F8 A609  BC05 5EB9 1877 3BBE EE74
-uid                  Thibaut <span class="o">(</span>Passbolt key<span class="o">)</span> &lt;myemail@company.com&gt;
-sub   2048R/01DEAE4A 2018-02-18
+<span class="go">[...]</span>
+<span class="go">gpg: checking the trustdb</span>
+<span class="go">gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model</span>
+<span class="go">gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u</span>
+<span class="go">pub   2048R/3BBEEE74 2018-02-18</span>
+<span class="go">      Key fingerprint = 2600 644A F1AC 07F8 A609  BC05 5EB9 1877 3BBE EE74</span>
+<span class="go">uid                  Thibaut (Passbolt key) &lt;myemail@company.com&gt;</span>
+<span class="go">sub   2048R/01DEAE4A 2018-02-18</span>
 </pre></div>
 
 
 <h2>4. Download and setup passbolt</h2>
 <p>Let's install passbolt in the /var/www/html/passbolt folder : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># git clone https://github.com/passbolt/passbolt_api.git /var/www/html/passbolt</span>
+<div class="highlight"><pre><span class="gp">#</span> git clone https://github.com/passbolt/passbolt_api.git /var/www/html/passbolt
 </pre></div>
 
 
 <p>Now we have to export the GPG keys to our passbolt directory : </p>
-<div class="highlight"><pre>root@centos <span class="c"># gpg --armor --export-secret-keys myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_private_key.key</span>
-root@centos <span class="c"># gpg --armor --export myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_public_key.key</span>
+<div class="highlight"><pre><span class="gp">#</span> gpg --armor --export-secret-keys myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_private_key.key
+<span class="gp">#</span> gpg --armor --export myemail@company.com &gt; /var/www/html/passbolt/app/Config/gpg/server_public_key.key
 </pre></div>
 
 
 <p>Then, let's change the permissions for httpd to run passbolt properly.</p>
-<div class="highlight"><pre>root@centos <span class="c"># chown -R apache:apache /var/www/html/passbolt/</span>
-root@centos <span class="c"># chmod +w -R /var/www/html/passbolt/app/tmp/</span>
-root@centos <span class="c"># chmod +w /var/www/html/passbolt/app/webroot/img/public/</span>
+<div class="highlight"><pre><span class="gp">#</span> chown -R apache:apache /var/www/html/passbolt/
+<span class="gp">#</span> chmod +w -R /var/www/html/passbolt/app/tmp/
+<span class="gp">#</span> chmod +w /var/www/html/passbolt/app/webroot/img/public/
 </pre></div>
 
 
 <h3>Changing configuration files</h3>
 <p>To change the configuration, we're going to copy the default passbolt files and modify them (with a small for loop): </p>
-<div class="highlight"><pre>root@centos <span class="c"># cd /var/www/html/passbolt/app/Config</span>
-root@centos <span class="c"># for file in core database app email ; do cp ${file}.php.default ${file}.php ; done</span>
+<div class="highlight"><pre><span class="gp">#</span> <span class="nb">cd</span> /var/www/html/passbolt/app/Config
+<span class="gp">#</span> <span class="k">for </span>file in core database app email ; <span class="k">do </span>cp <span class="k">${</span><span class="nv">file</span><span class="k">}</span>.php.default <span class="k">${</span><span class="nv">file</span><span class="k">}</span>.php ; <span class="k">done</span>
 </pre></div>
 
 
 <p>First in the "core.php" file, let's change the lines Security.salt and Security.cipherSeed with different values (you can choose to modify randomly the characters in the chains) : </p>
-<div class="highlight"><pre>Configure::write<span class="o">(</span><span class="s1">&#39;Security.salt&#39;</span>, <span class="s1">&#39;_randomize_a_salt_&#39;</span><span class="o">)</span>;
-Configure::write<span class="o">(</span><span class="s1">&#39;Security.cipherSeed&#39;</span>, <span class="s1">&#39;_randomize_a_seed&#39;</span><span class="o">)</span>;
+<div class="highlight"><pre><span class="go">Configure::write(&#39;Security.salt&#39;, &#39;_randomize_a_salt_&#39;);</span>
+<span class="go">Configure::write(&#39;Security.cipherSeed&#39;, &#39;_randomize_a_seed&#39;);</span>
 </pre></div>
 
 
 <p>We also need to uncomment and setup the App.fullBaseUrl entry. If you have a hostname prepared for your host in DNS, use it here.</p>
-<div class="highlight"><pre><span class="nn">Configure::</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;App.fullBaseUrl&#39;</span><span class="p">,</span> <span class="s">&#39;http://passbolt.home&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span class="go">Configure::write(&#39;App.fullBaseUrl&#39;, &#39;http://passbolt.home&#39;);</span>
 </pre></div>
 
 
 <p>Now in the "database.php" file, let's modify the entry with the database and user / password we defined earlier. The resulting lines will look like this:</p>
-<div class="highlight"><pre>       <span class="s1">&#39;host&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;localhost&#39;</span>,
-       <span class="s1">&#39;login&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;mypassboltdbuser&#39;</span>,
-       <span class="s1">&#39;password&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;mysupercomplicatedpassword&#39;</span>,
-       <span class="s1">&#39;database&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;passbolt_db&#39;</span>,
+<div class="highlight"><pre><span class="go">       &#39;host&#39; =&gt; &#39;localhost&#39;,</span>
+<span class="go">       &#39;login&#39; =&gt; &#39;mypassboltdbuser&#39;,</span>
+<span class="go">       &#39;password&#39; =&gt; &#39;mysupercomplicatedpassword&#39;,</span>
+<span class="go">       &#39;database&#39; =&gt; &#39;passbolt_db&#39;,</span>
 </pre></div>
 
 
 <p>Then we're going to modify app.php. Before doing that, let's grab the fingerprint of the gpg key we generated earlier using the following command (the awk removes everything before the = sign and all the spaces): </p>
-<div class="highlight"><pre>root@centos <span class="c"># gpg --fingerprint myemail@company.com | awk &#39;/fingerprint/ { gsub(/.*= | /,&quot;&quot;)  ; print}&#39;</span>
-2600644AF1AC07F8A609BC055EB918773BBEEE74
+<div class="highlight"><pre><span class="gp">#</span> gpg --fingerprint myemail@company.com | awk <span class="s1">&#39;/fingerprint/ { gsub(/.*= | /,&quot;&quot;)  ; print}&#39;</span>
+<span class="go">2600644AF1AC07F8A609BC055EB918773BBEEE74</span>
 </pre></div>
 
 
 <p>Now to the app.php file. We're going to modify the fingerprint, public and private entries in the serverKey section. The resulting values should look like this: </p>
-<div class="highlight"><pre>    // Main server key
-        <span class="s1">&#39;serverKey&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
-            // Server private key location and fingerprint
-            <span class="s1">&#39;fingerprint&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;2600644AF1AC07F8A609BC055EB918773BBEEE74&#39;</span>,
-            <span class="s1">&#39;public&#39;</span> <span class="o">=</span>&gt; APP . <span class="s1">&#39;Config&#39;</span> . DS . <span class="s1">&#39;gpg&#39;</span> . DS . <span class="s1">&#39;server_public_key.key&#39;</span>,
-            <span class="s1">&#39;private&#39;</span> <span class="o">=</span>&gt; APP . <span class="s1">&#39;Config&#39;</span> . DS . <span class="s1">&#39;gpg&#39;</span> . DS . <span class="s1">&#39;server_private_key.key&#39;</span>,
+<div class="highlight"><pre><span class="go">    // Main server key</span>
+<span class="go">        &#39;serverKey&#39; =&gt; [</span>
+<span class="go">            // Server private key location and fingerprint</span>
+<span class="go">            &#39;fingerprint&#39; =&gt; &#39;2600644AF1AC07F8A609BC055EB918773BBEEE74&#39;,</span>
+<span class="go">            &#39;public&#39; =&gt; APP . &#39;Config&#39; . DS . &#39;gpg&#39; . DS . &#39;server_public_key.key&#39;,</span>
+<span class="go">            &#39;private&#39; =&gt; APP . &#39;Config&#39; . DS . &#39;gpg&#39; . DS . &#39;server_private_key.key&#39;,</span>
 
-            // PHP Gnupg module currently does not support passphrase, please leave blank
-            <span class="s1">&#39;passphrase&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;&#39;</span>
-            <span class="o">]</span>
+<span class="go">            // PHP Gnupg module currently does not support passphrase, please leave blank</span>
+<span class="go">            &#39;passphrase&#39; =&gt; &#39;&#39;</span>
+<span class="go">            ]</span>
 </pre></div>
 
 
 <p>In the same file, we will also change the value of the home variable for the GPG section. Modify it to put /usr/share/httpd/.gnupg. </p>
-<div class="highlight"><pre><span class="s">&#39;home&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;/usr/share/httpd/.gnupg&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span class="go">&#39;home&#39; =&gt; &#39;/usr/share/httpd/.gnupg&#39;,</span>
 </pre></div>
 
 
 <h3>Setup GPG for apache</h3>
 <p>We need to setup apache for using the GPG keys we've setup. To do that, we need to create a .gnupg directory in apache's home directory.</p>
-<div class="highlight"><pre>root@centos <span class="c"># grep apache /etc/passwd</span>
-apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+<div class="highlight"><pre><span class="gp">#</span> grep apache /etc/passwd
+<span class="go">apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin</span>
 </pre></div>
 
 
 <p>So apache's home is /usr/share/httpd. This folder is owned by root, so let's create the .gnupg folder manually and allow apache to use it.</p>
-<div class="highlight"><pre>root@centos <span class="c"># mkdir /usr/share/httpd/.gnupg</span>
-root@centos <span class="c"># chown apache:apache /usr/share/httpd/.gnupg/</span>
-root@centos <span class="c"># su -c &quot;gpg --list-keys&quot; -s /bin/bash apache</span>
-gpg: keyring <span class="sb">`</span>/usr/share/httpd/.gnupg/pubring.gpg<span class="err">&#39;</span> created
-gpg: /usr/share/httpd/.gnupg/trustdb.gpg: trustdb created
+<div class="highlight"><pre><span class="gp">#</span> mkdir /usr/share/httpd/.gnupg
+<span class="gp">#</span> chown apache:apache /usr/share/httpd/.gnupg/
+<span class="gp">#</span> su -c <span class="s2">&quot;gpg --list-keys&quot;</span> -s /bin/bash apache
+<span class="go">gpg: keyring `/usr/share/httpd/.gnupg/pubring.gpg&#39; created</span>
+<span class="go">gpg: /usr/share/httpd/.gnupg/trustdb.gpg: trustdb created</span>
 </pre></div>
 
 
 <h2>Installing passbolt</h2>
 <p>Now we can move to the setup of passbolt in command line. Once this is done, we will move to setup httpd to be able to access it. To run installation, just type : </p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># su -s /bin/bash -c &quot;/var/www/html/passbolt/app/Console/cake install --no-admin&quot; apache</span>
+<div class="highlight"><pre><span class="gp">#</span> su -s /bin/bash -c <span class="s2">&quot;/var/www/html/passbolt/app/Console/cake install --no-admin&quot;</span> apache
 </pre></div>
 
 
 <p>If you see an error message about exec: php: not found, or wrong version, you need to re-enter the scl enabled bash using:</p>
-<div class="highlight"><pre><span class="n">root</span><span class="nv">@centos</span> <span class="c1"># scl enable rh-php71 bash</span>
+<div class="highlight"><pre><span class="gp">#</span> scl <span class="nb">enable </span>rh-php71 bash
 </pre></div>
 
 
@@ -380,75 +380,75 @@ gpg: /usr/share/httpd/.gnupg/trustdb.gpg: trustdb created
 <h2>5. Apache</h2>
 <p>In this section, we will setup the configuration file for our passbolt installation using the default httpd certificate. If you don't know how to setup a signed certificate, this will not be the subject of the current article, and there are plenty of such on the internet :)</p>
 <p>To setup apache, we are going to create the following file in </p>
-<div class="highlight"><pre><span class="sr">/etc/</span><span class="n">httpd</span><span class="sr">/conf.d/</span><span class="n">passbolt</span><span class="o">.</span><span class="n">conf</span>
+<div class="highlight"><pre><span class="go">/etc/httpd/conf.d/passbolt.conf</span>
 </pre></div>
 
 
 <p>With the following content: </p>
-<div class="highlight"><pre>&lt;VirtualHost *:80&gt;
-        ServerName passbolt.home
-        DocumentRoot /var/www/html/passbolt/
-        DirectoryIndex  index.php
-        &lt;FilesMatch <span class="se">\.</span>php<span class="nv">$&gt;</span>
-                SetHandler <span class="s2">&quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
-        &lt;/FilesMatch&gt;
-        &lt;Directory /var/www/html/passbolt/&gt;
-                Options FollowSymLinks
-                AllowOverride All
-                Require all granted
-        &lt;/Directory&gt;
-        LogLevel info
-        CustomLog /var/log/httpd/passbolt.log combined
+<div class="highlight"><pre><span class="go">&lt;VirtualHost *:80&gt;</span>
+<span class="go">        ServerName passbolt.home</span>
+<span class="go">        DocumentRoot /var/www/html/passbolt/</span>
+<span class="go">        DirectoryIndex  index.php</span>
+<span class="go">        &lt;FilesMatch \.php$&gt;</span>
+<span class="go">                SetHandler &quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
+<span class="go">        &lt;/FilesMatch&gt;</span>
+<span class="go">        &lt;Directory /var/www/html/passbolt/&gt;</span>
+<span class="go">                Options FollowSymLinks</span>
+<span class="go">                AllowOverride All</span>
+<span class="go">                Require all granted</span>
+<span class="go">        &lt;/Directory&gt;</span>
+<span class="go">        LogLevel info</span>
+<span class="go">        CustomLog /var/log/httpd/passbolt.log combined</span>
 
 
-&lt;/VirtualHost&gt;
-&lt;VirtualHost *:443&gt;
-        ServerName passbolt.home
-        DocumentRoot /var/www/html/passbolt/
-        DirectoryIndex index.php
-        &lt;FilesMatch <span class="se">\.</span>php<span class="nv">$&gt;</span>
-                SSLOptions +StdEnvVars
-                SetHandler <span class="s2">&quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
-        &lt;/FilesMatch&gt;
-        &lt;Directory /var/www/html/passbolt/&gt;
-                Options FollowSymLinks
-                AllowOverride All
-                Require all granted
-        &lt;/Directory&gt;
-        LogLevel debug
-        CustomLog /var/log/httpd/passbolt_ssl.log combined
-        SSLEngine on
-        SSLProtocol all -SSLv2
-        SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
-        SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-        SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+<span class="go">&lt;/VirtualHost&gt;</span>
+<span class="go">&lt;VirtualHost *:443&gt;</span>
+<span class="go">        ServerName passbolt.home</span>
+<span class="go">        DocumentRoot /var/www/html/passbolt/</span>
+<span class="go">        DirectoryIndex index.php</span>
+<span class="go">        &lt;FilesMatch \.php$&gt;</span>
+<span class="go">                SSLOptions +StdEnvVars</span>
+<span class="go">                SetHandler &quot;proxy:fcgi://127.0.0.1:9000&quot;</span>
+<span class="go">        &lt;/FilesMatch&gt;</span>
+<span class="go">        &lt;Directory /var/www/html/passbolt/&gt;</span>
+<span class="go">                Options FollowSymLinks</span>
+<span class="go">                AllowOverride All</span>
+<span class="go">                Require all granted</span>
+<span class="go">        &lt;/Directory&gt;</span>
+<span class="go">        LogLevel debug</span>
+<span class="go">        CustomLog /var/log/httpd/passbolt_ssl.log combined</span>
+<span class="go">        SSLEngine on</span>
+<span class="go">        SSLProtocol all -SSLv2</span>
+<span class="go">        SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA</span>
+<span class="go">        SSLCertificateFile /etc/pki/tls/certs/localhost.crt</span>
+<span class="go">        SSLCertificateKeyFile /etc/pki/tls/private/localhost.key</span>
 
-&lt;/VirtualHost&gt;
+<span class="go">&lt;/VirtualHost&gt;</span>
 </pre></div>
 
 
 <p>Now, we will enable and start apache using the following commands : </p>
-<div class="highlight"><pre><span class="c"># systemctl enable httpd</span>
-Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
-<span class="c"># systemctl start httpd</span>
-<span class="c"># systemctl status httpd</span>
-● httpd.service - The Apache HTTP Server
-   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled<span class="o">)</span>
-   Active: active <span class="o">(</span>running<span class="o">)</span> since Sun 2018-02-18 22:41:37 CET; 3s ago
-     Docs: man:httpd<span class="o">(</span>8<span class="o">)</span>
-           man:apachectl<span class="o">(</span>8<span class="o">)</span>
- Main PID: 2071 <span class="o">(</span>httpd<span class="o">)</span>
-   Status: <span class="s2">&quot;Processing requests...&quot;</span>
-   CGroup: /system.slice/httpd.service
-           ├─2071 /usr/sbin/httpd -DFOREGROUND
-           ├─2072 /usr/sbin/httpd -DFOREGROUND
-           ├─2073 /usr/sbin/httpd -DFOREGROUND
-           ├─2074 /usr/sbin/httpd -DFOREGROUND
-           ├─2075 /usr/sbin/httpd -DFOREGROUND
-           └─2076 /usr/sbin/httpd -DFOREGROUND
+<div class="highlight"><pre><span class="gp">#</span> systemctl <span class="nb">enable </span>httpd
+<span class="go">Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.</span>
+<span class="gp">#</span> systemctl start httpd
+<span class="gp">#</span> systemctl status httpd
+<span class="go">● httpd.service - The Apache HTTP Server</span>
+<span class="go">   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)</span>
+<span class="go">   Active: active (running) since Sun 2018-02-18 22:41:37 CET; 3s ago</span>
+<span class="go">     Docs: man:httpd(8)</span>
+<span class="go">           man:apachectl(8)</span>
+<span class="go"> Main PID: 2071 (httpd)</span>
+<span class="go">   Status: &quot;Processing requests...&quot;</span>
+<span class="go">   CGroup: /system.slice/httpd.service</span>
+<span class="go">           ├─2071 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">           ├─2072 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">           ├─2073 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">           ├─2074 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">           ├─2075 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">           └─2076 /usr/sbin/httpd -DFOREGROUND</span>
 
-Feb 18 22:41:37 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Starting The Apache HTTP Server...
-Feb 18 22:41:37 centos-kvm systemd<span class="o">[</span>1<span class="o">]</span>: Started The Apache HTTP Server.
+<span class="go">Feb 18 22:41:37 centos-kvm systemd[1]: Starting The Apache HTTP Server...</span>
+<span class="go">Feb 18 22:41:37 centos-kvm systemd[1]: Started The Apache HTTP Server.</span>
 </pre></div>
 
 
